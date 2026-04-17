@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">privalon<span>.</span></a>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#ui">Web UI</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="https://github.com/privalon/privalon" target="_blank" rel="noopener" class="nav-cta">GitHub &rarr;</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">Open Source Infrastructure Blueprint</div>
+        <h1>Your private cloud.<br /><em>Actually private.</em></h1>
+        <p class="hero-sub">
+          Privalon is an open-source blueprint for deploying and operating a private digital
+          ecosystem &mdash; with operational safety, predictable recovery, and a private-by-default
+          access model built in from day one.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/privalon/privalon/tree/main/docs" target="_blank" rel="noopener" class="btn-primary">Get Started</a>
+          <a href="https://github.com/privalon/privalon" target="_blank" rel="noopener" class="btn-ghost">View on GitHub &rarr;</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <span class="terminal-title">privalon &mdash; deploy</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">./scripts/deploy.sh full --env prod</span></div>
+          <div class="t-comment"># Provisioning infrastructure...</div>
+          <div class="t-output">&#x2713; Gateway VM ready (public 80/443)</div>
+          <div class="t-output">&#x2713; Headscale control plane online</div>
+          <div class="t-output">&#x2713; Monitoring stack deployed (tailnet-only)</div>
+          <div class="t-output">&#x2713; TLS certificates issued</div>
+          <div class="t-output">&#x2713; Backup backends configured</div>
+          <div class="t-success">&#x2713; Deploy complete. All services healthy.</div>
+          <br />
+          <div class="t-comment"># Restore on a fresh machine:</div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">./scripts/restore.sh \</span></div>
+          <div>&nbsp;&nbsp;<span class="t-cmd">--recovery-line 'bp1-a7f9c2e4b6d81053'</span></div>
+          <div class="t-success">&#x2713; Workspace restored from S3 backup.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="section" id="features">
+    <div class="section-label">// capabilities</div>
+    <h2>Operational safety by default</h2>
+    <p class="section-sub">
+      Every feature exists to reduce the gap between &ldquo;it started once&rdquo; and &ldquo;it runs reliably
+      over time.&rdquo;
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">[01] PRIVATE</div>
+        <div class="feature-title">Private by Default</div>
+        <div class="feature-desc">
+          Only what must be public is exposed. All services live on a private tailnet &mdash; no
+          public IPs, no public SSH, no exposed management surfaces.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">[02] OBSERVE</div>
+        <div class="feature-title">Built-in Observability</div>
+        <div class="feature-desc">
+          Prometheus, Grafana, Loki, and Alloy are part of the baseline &mdash; not optional extras.
+          Metrics, logs, dashboards, and health signals from day one.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">[03] RECOVER</div>
+        <div class="feature-title">Predictable Recovery</div>
+        <div class="feature-desc">
+          Encrypted dual-backend S3 backups run nightly. Restore paths are documented and
+          designed to work under stress, not just on a good day.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">[04] PERIMETER</div>
+        <div class="feature-title">Minimal Attack Surface</div>
+        <div class="feature-desc">
+          A single gateway handles public ingress. Everything else is tailnet-only. Host
+          firewalls default to deny. No improvised hardening required.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">[05] EXTEND</div>
+        <div class="feature-title">Repeatable Service Model</div>
+        <div class="feature-desc">
+          New services inherit DNS, TLS, backup, and observability automatically. Adding
+          Vaultwarden or a Matrix server doesn&rsquo;t break the operating model.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">[06] UI</div>
+        <div class="feature-title">Local Web UI</div>
+        <div class="feature-desc">
+          A locally-hosted browser interface wraps deploy scripts and config &mdash; running on your
+          workstation only, never exposed to the internet.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="arch-section" id="architecture">
+    <div class="arch-inner">
+      <div>
+        <div class="section-label">// architecture</div>
+        <h2>Minimal surface.<br />Maximum control.</h2>
+        <p class="section-sub">
+          Three VM roles, one public entry point, everything else strictly private. Portable
+          across cloud providers.
+        </p>
+        <div class="arch-nodes">
+          <div class="arch-node">
+            <div class="arch-node-badge">PUBLIC</div>
+            <div>
+              <div class="arch-node-title">Gateway VM</div>
+              <div class="arch-node-desc">
+                Reverse proxy (Caddy), TLS termination, public ingress on 80/443, full-tunnel
+                VPN exit node.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">CTRL</div>
+            <div>
+              <div class="arch-node-title">Headscale Control VM</div>
+              <div class="arch-node-desc">
+                Private network control plane &mdash; device registration, ACL enforcement, DERP
+                relay, WireGuard key distribution.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">PRIVATE</div>
+            <div>
+              <div class="arch-node-title">Workload VMs</div>
+              <div class="arch-node-desc">
+                No public IPv4. Services bind to Tailscale IPs only. Default stack: Prometheus
+                + Grafana + Loki on the monitoring VM.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">BACKUP</div>
+            <div>
+              <div class="arch-node-title">Dual S3 Backends</div>
+              <div class="arch-node-desc">
+                Encrypted Restic backups to two independent S3-compatible stores. Nightly,
+                deduplicated, replicated.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-diagram">
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; <span class="highlight">Gateway VM</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; Public 80/443&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; Caddy + Exit Node&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502; Tailscale</div>
+        <div>&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&nbsp;&nbsp;&#x2502;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&#x250C;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x250C;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&#x2502; <span class="blue">Headscale</span>&nbsp;&nbsp;&#x2502; &#x2502; <span class="blue">Monitoring</span>&nbsp;&#x2502;</div>
+        <div>&#x2502; Control VM &#x2502; &#x2502; VM (private)&#x2502;</div>
+        <div>&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518; &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;Your Devices</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB UI SHOWCASE -->
+  <div class="ui-section" id="ui">
+    <div class="ui-inner">
+      <div class="ui-header">
+        <div class="section-label">// web ui</div>
+        <h2>Deploy from your browser.<br />Logs stream live.</h2>
+        <p class="section-sub">
+          Privalon ships with a locally-hosted Web UI that wraps the deploy scripts. Select
+          environment, scope, and options &mdash; then watch Ansible tasks execute in real time.
+          Never exposed to the internet.
+        </p>
+      </div>
+      <div class="ui-screenshots">
+        <div class="ui-screenshot">
+          <div class="ui-screenshot-bar">
+            <div class="dot r"></div>
+            <div class="dot y"></div>
+            <div class="dot g"></div>
+            <span>localhost:8090 &mdash; Deploy</span>
+          </div>
+          <img src="/ui-deploy-form.webp" alt="Privalon Web UI - New Deployment form" loading="lazy" />
+          <div class="ui-caption">// New Deployment &mdash; select environment, scope, and options</div>
+        </div>
+        <div class="ui-screenshot">
+          <div class="ui-screenshot-bar">
+            <div class="dot r"></div>
+            <div class="dot y"></div>
+            <div class="dot g"></div>
+            <span>localhost:8090 &mdash; Live Log</span>
+          </div>
+          <img src="/ui-deploy-log.webp" alt="Privalon Web UI - Live Ansible log stream" loading="lazy" />
+          <div class="ui-caption">// Live Ansible task log with progress bar and collapsible sections</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOVERY -->
+  <div class="recovery-section">
+    <div class="section-label">// recovery</div>
+    <h2>One line to restore everything</h2>
+    <p class="section-sub" style="margin: 0 auto 0; text-align:center; max-width:600px;">
+      Like a crypto wallet seed phrase, your portable recovery line is all you need. If every
+      machine dies and your laptop is lost &mdash; as long as one S3 backup is alive, you&rsquo;re back.
+    </p>
+    <div class="recovery-card">
+      <p class="recovery-quote">&ldquo;Save one line. Recover everything.&rdquo;</p>
+      <div class="recovery-code">
+        ./scripts/restore.sh --recovery-line 'bp1-a7f9c2e4b6d81053-9f8e7d6c5b4a3021'
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="roadmap-section" id="roadmap">
+    <div class="roadmap-inner">
+      <div class="section-label">// roadmap</div>
+      <h2>Where we&rsquo;re going</h2>
+      <p class="section-sub">
+        The long-term goal is to make running your own private infrastructure feel normal &mdash;
+        not exceptional.
+      </p>
+      <div class="roadmap-grid">
+        <div class="roadmap-item">
+          <div class="roadmap-status done">SHIPPED</div>
+          <div class="roadmap-title">Core Infrastructure Blueprint</div>
+          <div class="roadmap-desc">
+            Gateway VM, Headscale control plane, monitoring stack, dual S3 backups, and
+            portable recovery line.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status done">SHIPPED</div>
+          <div class="roadmap-title">Local Web UI</div>
+          <div class="roadmap-desc">
+            Browser-based deploy interface with real-time Ansible log streaming, environment
+            management, and deployment history.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status wip">IN PROGRESS</div>
+          <div class="roadmap-title">Multi-provider Terraform Modules</div>
+          <div class="roadmap-desc">
+            Expanding beyond ThreeFold Grid to Hetzner and DigitalOcean for broader provider
+            portability.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status planned">PLANNED</div>
+          <div class="roadmap-title">Internal Service Templates</div>
+          <div class="roadmap-desc">
+            Reusable onboarding patterns for services like Vaultwarden, Matrix, and Nextcloud
+            that inherit the full operating model automatically.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status planned">PLANNED</div>
+          <div class="roadmap-title">AI Sysadmin Layer</div>
+          <div class="roadmap-desc">
+            A private AI assistant that helps with operations &mdash; answering questions, diagnosing
+            issues, and suggesting actions &mdash; without sending data to external platforms.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status planned">PLANNED</div>
+          <div class="roadmap-title">Blueprint Improvement Cycle</div>
+          <div class="roadmap-desc">
+            Continuous hardening of the baseline: improved ACL defaults, automated health
+            checks, and operator runbooks built into the repo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-logo">privalon</a>
+    <div class="footer-links">
+      <a href="https://github.com/privalon/privalon" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/privalon/privalon/tree/main/docs" target="_blank" rel="noopener">Docs</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="https://github.com/privalon/privalon/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+    </div>
+    <div>Open Source &middot; MIT License</div>
+  </footer>
+</BaseLayout>
