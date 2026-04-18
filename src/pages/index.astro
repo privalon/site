@@ -212,7 +212,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="dot g"></div>
             <span>localhost:8090 &mdash; Deploy</span>
           </div>
-          <img src="/ui-deploy-form.webp" alt="Privalon Web UI - New Deployment form" loading="lazy" />
+          <img src={`${import.meta.env.BASE_URL}ui-deploy-form.webp`} alt="Privalon Web UI - New Deployment form" loading="lazy" />
           <div class="ui-caption">// New Deployment &mdash; select environment, scope, and options</div>
         </div>
         <div class="ui-screenshot">
@@ -222,7 +222,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="dot g"></div>
             <span>localhost:8090 &mdash; Live Log</span>
           </div>
-          <img src="/ui-deploy-log.webp" alt="Privalon Web UI - Live Ansible log stream" loading="lazy" />
+          <img src={`${import.meta.env.BASE_URL}ui-deploy-log.webp`} alt="Privalon Web UI - Live Ansible log stream" loading="lazy" />
           <div class="ui-caption">// Live Ansible task log with progress bar and collapsible sections</div>
         </div>
       </div>
