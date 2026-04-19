@@ -22,13 +22,14 @@ pnpm preview
 
 ## Publishing to GitHub Pages
 
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) is configured to deploy **manually only** — it will **not** trigger automatically on push.
+The GitHub Actions workflow (`.github/workflows/deploy.yml`) is configured to deploy automatically from the `production` branch.
 
 To publish the site:
 
-1. Go to the **Actions** tab in this repository.
-2. Click **"Run workflow"** on the "Deploy to GitHub Pages" workflow.
-3. Select the `main` branch and confirm.
+1. Push or merge changes into the `production` branch.
+2. The "Deploy to GitHub Pages" workflow will run automatically.
+
+You can still run it manually from the **Actions** tab using **"Run workflow"** if needed.
 
 The site will be built and deployed to `https://privalon.github.io/site/`.
 
@@ -47,5 +48,5 @@ public/
   ui-deploy-log.webp   # Web UI screenshot — live log
 .github/
   workflows/
-    deploy.yml         # Manual-only GitHub Pages deployment workflow
+    deploy.yml         # Auto deploy on push to production
 ```
