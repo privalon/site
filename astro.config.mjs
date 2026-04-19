@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://privalon.github.io',
-  base: '/site',
+  base: '/',
   output: 'static',
   server: {
     allowedHosts: true,
