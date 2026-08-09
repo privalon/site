@@ -1,6 +1,6 @@
 # Privalon Site
 
-The official landing page for [Privalon](https://github.com/privalon/privalon) — an open-source blueprint for deploying and operating a private digital ecosystem.
+The official landing page for [Privalon](https://github.com/privalon/privalon) — a source-available blueprint for deploying and operating a private digital ecosystem.
 
 Built with [Astro](https://astro.build), styled with a custom Dark Terminal design. Configured for [GitHub Pages](https://pages.github.com) deployment.
 
@@ -31,7 +31,7 @@ To publish the site:
 
 You can still run it manually from the **Actions** tab using **"Run workflow"** if needed.
 
-The site will be built and deployed to `https://privalon.github.io/site/`.
+The site will be built and deployed to `https://privalon.net` (custom domain, see `public/CNAME`).
 
 > **Note:** Before publishing, make sure GitHub Pages is enabled in the repository settings with **Source: GitHub Actions**.
 
@@ -42,11 +42,13 @@ src/
   layouts/
     BaseLayout.astro   # Global styles and HTML shell
   pages/
-    index.astro        # Main landing page
-public/
-  ui-deploy-form.webp  # Web UI screenshot — deploy form
-  ui-deploy-log.webp   # Web UI screenshot — live log
+    index.astro        # Main landing page — hero, features, app catalog,
+                        # architecture, dashboard mockup, roadmap
 .github/
   workflows/
     deploy.yml         # Auto deploy on push to production
 ```
+
+The dashboard shown on the landing page (`#dashboard` section) is hand-coded markup
+styled to match the real local Web UI, not a screenshot — update it directly in
+`index.astro` when the real dashboard's layout changes, rather than swapping in an image.

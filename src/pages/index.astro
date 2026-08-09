@@ -8,8 +8,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <a href="/" class="logo">privalon<span>.</span></a>
     <ul>
       <li><a href="#features">Features</a></li>
+      <li><a href="#apps">Apps</a></li>
       <li><a href="#architecture">Architecture</a></li>
-      <li><a href="#ui">Web UI</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="https://github.com/privalon/privalon" target="_blank" rel="noopener" class="nav-cta">GitHub &rarr;</a></li>
     </ul>
@@ -19,12 +20,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="hero-label">Open Source Infrastructure Blueprint</div>
+        <div class="hero-label">Source-Available Infrastructure Blueprint</div>
         <h1>Your private cloud.<br /><em>Actually private.</em></h1>
         <p class="hero-sub">
-          Privalon is an open-source blueprint for deploying and operating a private digital
-          ecosystem &mdash; with operational safety, predictable recovery, and a private-by-default
-          access model built in from day one.
+          Privalon provisions and operates a private digital ecosystem &mdash; gateway, private
+          network, monitoring, backups, and a real application catalog &mdash; with operational
+          safety and predictable recovery built in from day one, not bolted on afterward.
         </p>
         <div class="hero-actions">
           <a href="https://github.com/privalon/privalon/tree/main/docs" target="_blank" rel="noopener" class="btn-primary">Get Started</a>
@@ -71,8 +72,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="feature-icon">[01] PRIVATE</div>
         <div class="feature-title">Private by Default</div>
         <div class="feature-desc">
-          Only what must be public is exposed. All services live on a private tailnet &mdash; no
-          public IPs, no public SSH, no exposed management surfaces.
+          Only what must be public is exposed. Every application lives on a private tailnet &mdash;
+          no public IPs, no public SSH, no exposed management surfaces.
         </div>
       </div>
       <div class="feature-card">
@@ -87,8 +88,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="feature-icon">[03] RECOVER</div>
         <div class="feature-title">Predictable Recovery</div>
         <div class="feature-desc">
-          Encrypted dual-backend S3 backups run nightly. Restore paths are documented and
-          designed to work under stress, not just on a good day.
+          Encrypted dual-backend S3 backups, checked by Backrest, run on a schedule per service.
+          Restore paths are documented and designed to work under stress, not just on a good day.
         </div>
       </div>
       <div class="feature-card">
@@ -103,17 +104,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="feature-icon">[05] EXTEND</div>
         <div class="feature-title">Repeatable Service Model</div>
         <div class="feature-desc">
-          New services inherit DNS, TLS, backup, and observability automatically. Adding
-          Vaultwarden or a Matrix server doesn&rsquo;t break the operating model.
+          Every application declares its own contract &mdash; health checks, backup scope, log
+          sources &mdash; so DNS, TLS, backup, and observability are wired up automatically, the
+          same way, every time.
         </div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">[06] UI</div>
-        <div class="feature-title">Local Web UI</div>
+        <div class="feature-icon">[06] DASHBOARD</div>
+        <div class="feature-title">Local Operations Dashboard</div>
         <div class="feature-desc">
-          A locally-hosted browser interface wraps deploy scripts and config &mdash; running on your
-          workstation only, never exposed to the internet.
+          A locally-hosted browser dashboard for deploys, apps, devices, and activity &mdash;
+          running on your own workstation only, never exposed to the internet.
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPS -->
+  <div class="section" id="apps">
+    <div class="section-label">// application catalog</div>
+    <h2>Real apps, not just infrastructure</h2>
+    <p class="section-sub">
+      Every application in the catalog inherits the same operating model automatically &mdash;
+      private by default, backed up, monitored, and reachable through one gateway.
+    </p>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-card-name">Forgejo</div>
+        <div class="app-card-desc">Self-hosted Git, issues, and CI &mdash; your own GitHub.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">Nextcloud</div>
+        <div class="app-card-desc">Files, calendar, and collaboration, with S3-backed storage.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">Vaultwarden</div>
+        <div class="app-card-desc">A private, Bitwarden-compatible password manager.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">Mail</div>
+        <div class="app-card-desc">Full email hosting on Stalwart &mdash; SMTP, IMAP, spam filtering.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">Matrix</div>
+        <div class="app-card-desc">Private chat, voice, and video &mdash; Element web client, Jitsi calls.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">Ente Photos</div>
+        <div class="app-card-desc">End-to-end encrypted photo and video backup.</div>
+      </div>
+      <div class="app-card">
+        <div class="app-card-name">OnlyOffice</div>
+        <div class="app-card-desc">Real-time document editing, integrated directly into Nextcloud.</div>
+      </div>
+      <div class="app-card app-card-more">
+        <div class="app-card-name">+ your next app</div>
+        <div class="app-card-desc">New services plug into the same contract &mdash; add one from the Apps tab.</div>
       </div>
     </div>
   </div>
@@ -125,8 +172,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="section-label">// architecture</div>
         <h2>Minimal surface.<br />Maximum control.</h2>
         <p class="section-sub">
-          Three VM roles, one public entry point, everything else strictly private. Portable
-          across cloud providers.
+          Three VM roles, one public entry point, everything else strictly private. Runs on
+          ThreeFold Grid or Hetzner Cloud today &mdash; the same blueprint, either provider.
         </p>
         <div class="arch-nodes">
           <div class="arch-node">
@@ -145,7 +192,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div class="arch-node-title">Headscale Control VM</div>
               <div class="arch-node-desc">
                 Private network control plane &mdash; device registration, ACL enforcement, DERP
-                relay, WireGuard key distribution.
+                relay, WireGuard key distribution. Headplane gives it an admin UI.
               </div>
             </div>
           </div>
@@ -154,8 +201,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div>
               <div class="arch-node-title">Workload VMs</div>
               <div class="arch-node-desc">
-                No public IPv4. Services bind to Tailscale IPs only. Default stack: Prometheus
-                + Grafana + Loki on the monitoring VM.
+                No public IPv4. Applications bind to tailnet IPs only. Monitoring stack is
+                Prometheus, Grafana, Loki, and Alloy.
               </div>
             </div>
           </div>
@@ -164,8 +211,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div>
               <div class="arch-node-title">Dual S3 Backends</div>
               <div class="arch-node-desc">
-                Encrypted Restic backups to two independent S3-compatible stores. Nightly,
-                deduplicated, replicated.
+                Encrypted Restic backups to two independent S3-compatible stores, tracked by
+                Backrest. Scheduled, deduplicated, replicated.
               </div>
             </div>
           </div>
@@ -183,47 +230,85 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div>&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
         <div>&nbsp;&nbsp;&#x2502;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
         <div>&#x250C;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x250C;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
-        <div>&#x2502; <span class="blue">Headscale</span>&nbsp;&nbsp;&#x2502; &#x2502; <span class="blue">Monitoring</span>&nbsp;&#x2502;</div>
-        <div>&#x2502; Control VM &#x2502; &#x2502; VM (private)&#x2502;</div>
+        <div>&#x2502; <span class="blue">Headscale</span>&nbsp;&nbsp;&#x2502; &#x2502; <span class="blue">Workload</span>&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&#x2502; Control VM &#x2502; &#x2502; VMs (private)&#x2502;</div>
         <div>&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518; &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
         <div>&nbsp;&nbsp;&nbsp;Your Devices</div>
+        <br />
+        <div class="dim">// providers: ThreeFold Grid &middot; Hetzner Cloud</div>
       </div>
     </div>
   </div>
 
-  <!-- WEB UI SHOWCASE -->
-  <div class="ui-section" id="ui">
+  <!-- DASHBOARD -->
+  <div class="ui-section" id="dashboard">
     <div class="ui-inner">
       <div class="ui-header">
-        <div class="section-label">// web ui</div>
-        <h2>Deploy from your browser.<br />Logs stream live.</h2>
+        <div class="section-label">// dashboard</div>
+        <h2>One dashboard for your whole private cloud.</h2>
         <p class="section-sub">
-          Privalon ships with a locally-hosted Web UI that wraps the deploy scripts. Select
-          environment, scope, and options &mdash; then watch Ansible tasks execute in real time.
-          Never exposed to the internet.
+          The local Web UI isn&rsquo;t just a deploy wrapper anymore &mdash; it&rsquo;s where you check
+          health, manage apps, add devices, and review activity. Runs on your workstation only,
+          never exposed to the internet.
         </p>
       </div>
-      <div class="ui-screenshots">
-        <div class="ui-screenshot">
-          <div class="ui-screenshot-bar">
-            <div class="dot r"></div>
-            <div class="dot y"></div>
-            <div class="dot g"></div>
-            <span>localhost:8090 &mdash; Deploy</span>
-          </div>
-          <img src={`${import.meta.env.BASE_URL}ui-deploy-form.webp`} alt="Privalon Web UI - New Deployment form" loading="lazy" />
-          <div class="ui-caption">// New Deployment &mdash; select environment, scope, and options</div>
+
+      <div class="dash-mock">
+        <div class="dash-mock-bar">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <span>localhost:8090</span>
         </div>
-        <div class="ui-screenshot">
-          <div class="ui-screenshot-bar">
-            <div class="dot r"></div>
-            <div class="dot y"></div>
-            <div class="dot g"></div>
-            <span>localhost:8090 &mdash; Live Log</span>
+        <div class="dash-mock-body">
+          <div class="dash-mock-nav">
+            <span class="dash-mock-logo">privalon<span>.</span></span>
+            <span class="dash-mock-tab active">Home</span>
+            <span class="dash-mock-tab">Apps</span>
+            <span class="dash-mock-tab">Devices</span>
+            <span class="dash-mock-tab">Activity</span>
+            <span class="dash-mock-tab">System</span>
+            <span class="dash-mock-env">test &#x25be;</span>
           </div>
-          <img src={`${import.meta.env.BASE_URL}ui-deploy-log.webp`} alt="Privalon Web UI - Live Ansible log stream" loading="lazy" />
-          <div class="ui-caption">// Live Ansible task log with progress bar and collapsible sections</div>
+
+          <div class="dash-mock-status">
+            <span class="status-dot"></span> All systems healthy
+            <span class="dash-mock-status-meta">last checked 12:04 &middot; refresh</span>
+          </div>
+          <div class="dash-mock-attention">Needs your attention (0) &mdash; all clear.</div>
+
+          <div class="dash-mock-section-title">Your apps</div>
+          <div class="dash-mock-grid">
+            <div class="dash-mock-item"><span>forgejo</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>mail</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>nextcloud</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>vaultwarden</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>matrix</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>ente-photos</span><span class="status-pill">up</span></div>
+            <div class="dash-mock-item"><span>onlyoffice</span><span class="status-pill">up</span></div>
+          </div>
+
+          <div class="dash-mock-section-title">Platform</div>
+          <div class="dash-mock-grid">
+            <div class="dash-mock-item"><span>Network</span><span class="status-pill">11 of 11 online</span></div>
+            <div class="dash-mock-item"><span>Backups</span><span class="status-pill">healthy</span></div>
+            <div class="dash-mock-item"><span>Certificates</span><span class="status-pill">87 days left</span></div>
+            <div class="dash-mock-item"><span>DNS</span><span class="status-pill">converged</span></div>
+          </div>
+
+          <div class="dash-mock-section-title">Infrastructure</div>
+          <div class="dash-mock-grid">
+            <div class="dash-mock-item"><span>Headscale (control plane)</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Headplane (admin UI)</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Gateway (Caddy)</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Prometheus</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Grafana</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Loki</span><span class="status-pill">ok</span></div>
+            <div class="dash-mock-item"><span>Backrest</span><span class="status-pill">ok</span></div>
+          </div>
+
+          <div class="dash-mock-details">&#x203a; Technical details (raw platform state)</div>
         </div>
       </div>
     </div>
@@ -265,42 +350,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status done">SHIPPED</div>
-          <div class="roadmap-title">Local Web UI</div>
+          <div class="roadmap-title">Full Operations Dashboard</div>
           <div class="roadmap-desc">
-            Browser-based deploy interface with real-time Ansible log streaming, environment
-            management, and deployment history.
+            Home, Apps, Devices, Activity, and System tabs &mdash; not just a deploy wrapper, an
+            ongoing operations console for your own workstation.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status done">SHIPPED</div>
+          <div class="roadmap-title">Application Catalog</div>
+          <div class="roadmap-desc">
+            Forgejo, Nextcloud, Vaultwarden, Mail, Matrix, Ente Photos, and OnlyOffice, each
+            inheriting backup, DNS, TLS, and observability automatically.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status done">SHIPPED</div>
+          <div class="roadmap-title">Multi-Provider Support</div>
+          <div class="roadmap-desc">
+            The same blueprint deploys to ThreeFold Grid or Hetzner Cloud &mdash; provider choice
+            without an operating-model rewrite.
           </div>
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status wip">IN PROGRESS</div>
-          <div class="roadmap-title">Multi-provider Terraform Modules</div>
+          <div class="roadmap-title">Unified Identity &amp; Device Provisioning</div>
           <div class="roadmap-desc">
-            Expanding beyond ThreeFold Grid to Hetzner and DigitalOcean for broader provider
-            portability.
+            One person, one identity, across every application &mdash; add, block, or offboard
+            someone from the whole environment in a single action.
           </div>
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status planned">PLANNED</div>
-          <div class="roadmap-title">Internal Service Templates</div>
+          <div class="roadmap-title">Private AI Operations Layer</div>
           <div class="roadmap-desc">
-            Reusable onboarding patterns for services like Vaultwarden, Matrix, and Nextcloud
-            that inherit the full operating model automatically.
-          </div>
-        </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status planned">PLANNED</div>
-          <div class="roadmap-title">AI Sysadmin Layer</div>
-          <div class="roadmap-desc">
-            A private AI assistant that helps with operations &mdash; answering questions, diagnosing
-            issues, and suggesting actions &mdash; without sending data to external platforms.
-          </div>
-        </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status planned">PLANNED</div>
-          <div class="roadmap-title">Blueprint Improvement Cycle</div>
-          <div class="roadmap-desc">
-            Continuous hardening of the baseline: improved ACL defaults, automated health
-            checks, and operator runbooks built into the repo.
+            An AI assistant that helps operate the environment &mdash; answering questions,
+            diagnosing issues, suggesting actions &mdash; without sending data to external platforms.
           </div>
         </div>
       </div>
@@ -316,6 +401,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a href="#roadmap">Roadmap</a>
       <a href="https://github.com/privalon/privalon/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
     </div>
-    <div>Open Source &middot; MIT License</div>
+    <div>Source-available &middot; Business Source License 1.1</div>
   </footer>
 </BaseLayout>

@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = "Privalon — Your private cloud. Actually private.",
-  description = "An open-source blueprint for deploying and operating a private digital ecosystem with operational safety, predictable recovery, and a private-by-default access model.",
+  description = "A source-available blueprint for deploying and operating a private digital ecosystem — gateway, private network, monitoring, backups, and a real application catalog (Nextcloud, Vaultwarden, Matrix, Mail, and more) — with operational safety and predictable recovery built in from day one.",
 } = Astro.props;
 ---
 
@@ -340,6 +340,46 @@ const {
     line-height: 1.6;
   }
 
+  /* APPS GRID */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .app-card {
+    background: var(--bg2);
+    padding: 1.6rem 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .app-card:hover { background: var(--bg3); }
+
+  .app-card-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+
+  .app-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .app-card-more {
+    background: transparent;
+    border: 1px dashed var(--border);
+  }
+
+  .app-card-more .app-card-name { color: var(--text-dim); }
+
   /* ARCHITECTURE */
   .arch-section {
     background: var(--bg2);
@@ -370,6 +410,7 @@ const {
 
   .arch-diagram .highlight { color: var(--green); }
   .arch-diagram .blue { color: var(--blue); }
+  .arch-diagram .dim { color: var(--text-dim); font-size: 0.72rem; }
 
   .arch-nodes {
     display: flex;
@@ -430,20 +471,16 @@ const {
     margin-bottom: 3rem;
   }
 
-  .ui-screenshots {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .ui-screenshot {
+  /* DASHBOARD MOCK */
+  .dash-mock {
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    background: var(--bg);
   }
 
-  .ui-screenshot-bar {
+  .dash-mock-bar {
     background: var(--bg3);
     border-bottom: 1px solid var(--border);
     padding: 0.5rem 1rem;
@@ -455,18 +492,111 @@ const {
     color: var(--text-dim);
   }
 
-  .ui-screenshot img {
-    width: 100%;
-    display: block;
+  .dash-mock-body {
+    padding: 1.5rem 2rem 2rem;
   }
 
-  .ui-caption {
-    padding: 0.75rem 1rem;
-    background: var(--bg3);
-    border-top: 1px solid var(--border);
+  .dash-mock-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+
+  .dash-mock-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .dash-mock-logo span { color: var(--text-dim); }
+
+  .dash-mock-tab { color: var(--text-dim); }
+  .dash-mock-tab.active { color: var(--text); font-weight: 600; }
+
+  .dash-mock-env {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .dash-mock-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--green);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px rgba(0,255,136,0.6);
+    flex-shrink: 0;
+  }
+
+  .dash-mock-status-meta {
+    margin-left: auto;
+    color: var(--text-dim);
+    font-weight: 400;
+    font-size: 0.78rem;
+  }
+
+  .dash-mock-attention {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .dash-mock-section-title {
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 1.8rem 0 0.8rem;
+  }
+
+  .dash-mock-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+  }
+
+  .dash-mock-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  .status-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .dash-mock-details {
+    margin-top: 1.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
   }
 
   /* RECOVERY */
@@ -621,12 +751,16 @@ const {
 
     .section { padding: 4rem 1.5rem; }
     .features-grid { grid-template-columns: 1fr; }
+    .apps-grid { grid-template-columns: 1fr 1fr; }
 
     .arch-section { padding: 4rem 1.5rem; }
     .arch-inner { grid-template-columns: 1fr; gap: 3rem; }
 
     .ui-section { padding: 4rem 1.5rem; }
-    .ui-screenshots { grid-template-columns: 1fr; }
+    .dash-mock-body { padding: 1.2rem 1rem 1.5rem; }
+    .dash-mock-nav { flex-wrap: wrap; gap: 0.8rem 1.2rem; }
+    .dash-mock-env { margin-left: 0; order: -1; width: 100%; }
+    .dash-mock-grid { grid-template-columns: 1fr 1fr; }
 
     .recovery-section { padding: 4rem 1.5rem; }
     .recovery-code { font-size: 0.75rem; padding: 1rem 1.2rem; }
@@ -636,5 +770,18 @@ const {
 
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; text-align: center; }
     .footer-links { gap: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .apps-grid { grid-template-columns: 1fr; }
+    .dash-mock-grid { grid-template-columns: 1fr; }
+
+    /* Longer status values ("11 of 11 online", "87 days left") don't fit
+       beside their label at this width -- stack instead of wrapping mid-word. */
+    .dash-mock-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+    }
   }
 </style>
