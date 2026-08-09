@@ -7,10 +7,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <nav>
     <a href="/" class="logo">privalon<span>.</span></a>
     <ul>
-      <li><a href="#features">Features</a></li>
       <li><a href="#apps">Apps</a></li>
-      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#safety">Safety</a></li>
       <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#architecture">Architecture</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="https://github.com/privalon/privalon" target="_blank" rel="noopener" class="nav-cta">GitHub &rarr;</a></li>
     </ul>
@@ -20,15 +20,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="hero">
     <div class="hero-grid">
       <div>
-        <div class="hero-label">Source-Available Infrastructure Blueprint</div>
-        <h1>Your private cloud.<br /><em>Actually private.</em></h1>
+        <div class="hero-label">Your Personal Private Cloud</div>
+        <h1>Your digital life.<br /><em>Under your control.</em></h1>
         <p class="hero-sub">
-          Privalon provisions and operates a private digital ecosystem &mdash; gateway, private
-          network, monitoring, backups, and a real application catalog &mdash; with operational
-          safety and predictable recovery built in from day one, not bolted on afterward.
+          Run chat, files, photos, passwords, email and other everyday services for yourself and
+          your family on infrastructure you control. Privalon provides the private network,
+          deployment, monitoring, backups and recovery around them.
         </p>
         <div class="hero-actions">
-          <a href="https://github.com/privalon/privalon/tree/main/docs" target="_blank" rel="noopener" class="btn-primary">Get Started</a>
+          <a href="https://github.com/privalon/privalon/tree/main/docs" target="_blank" rel="noopener" class="btn-primary">Explore Privalon</a>
           <a href="https://github.com/privalon/privalon" target="_blank" rel="noopener" class="btn-ghost">View on GitHub &rarr;</a>
         </div>
       </div>
@@ -40,14 +40,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="terminal-title">privalon &mdash; deploy</span>
         </div>
         <div class="terminal-body">
-          <div><span class="t-prompt">$</span> <span class="t-cmd">./scripts/deploy.sh full --env prod</span></div>
-          <div class="t-comment"># Provisioning infrastructure...</div>
-          <div class="t-output">&#x2713; Gateway VM ready (public 80/443)</div>
-          <div class="t-output">&#x2713; Headscale control plane online</div>
-          <div class="t-output">&#x2713; Monitoring stack deployed (tailnet-only)</div>
-          <div class="t-output">&#x2713; TLS certificates issued</div>
-          <div class="t-output">&#x2713; Backup backends configured</div>
-          <div class="t-success">&#x2713; Deploy complete. All services healthy.</div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">./scripts/deploy.sh full --env home</span></div>
+          <div class="t-comment"># Provisioning your private environment...</div>
+          <div class="t-output">&#x2713; Private network ready</div>
+          <div class="t-output">&#x2713; Matrix deployed</div>
+          <div class="t-output">&#x2713; Monitoring active</div>
+          <div class="t-output">&#x2713; Encrypted backups configured</div>
+          <div class="t-output">&#x2713; Recovery state verified</div>
+          <div class="t-success">&#x2713; Your private environment is healthy.</div>
           <br />
           <div class="t-comment"># Restore on a fresh machine:</div>
           <div><span class="t-prompt">$</span> <span class="t-cmd">./scripts/restore.sh \</span></div>
@@ -58,185 +58,176 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <div class="section" id="features">
-    <div class="section-label">// capabilities</div>
-    <h2>Operational safety by default</h2>
+  <!-- APPS -->
+  <div class="section" id="apps">
+    <div class="section-label">// the services behind your digital life</div>
+    <h2>Familiar apps. One operating model.</h2>
     <p class="section-sub">
-      Every feature exists to reduce the gap between &ldquo;it started once&rdquo; and &ldquo;it runs reliably
-      over time.&rdquo;
+      Use proven open-source applications for communication, storage, passwords, photos and
+      collaboration, with one operating model around all of them &mdash; private by default,
+      backed up, monitored, and reachable through one gateway.
+    </p>
+
+    <div class="app-group">
+      <div class="app-group-label">Communication</div>
+      <div class="apps-grid apps-grid-2">
+        <div class="app-card app-card-featured">
+          <div class="app-card-badge">First family workload</div>
+          <div class="app-card-name">Matrix</div>
+          <div class="app-card-desc">Private messaging, voice and video for you, your family, or a small trusted group.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-name">Mail</div>
+          <div class="app-card-desc">Full email hosting on Stalwart &mdash; SMTP, IMAP, spam filtering.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-group">
+      <div class="app-group-label">Personal data</div>
+      <div class="apps-grid apps-grid-3">
+        <div class="app-card">
+          <div class="app-card-name">Nextcloud</div>
+          <div class="app-card-desc">Files, calendar, and collaboration, with S3-backed storage.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-name">Ente Photos</div>
+          <div class="app-card-desc">End-to-end encrypted photo and video backup.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-name">Vaultwarden</div>
+          <div class="app-card-desc">A private, Bitwarden-compatible password manager.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-group">
+      <div class="app-group-label">Creation &amp; work</div>
+      <div class="apps-grid apps-grid-3">
+        <div class="app-card">
+          <div class="app-card-name">OnlyOffice</div>
+          <div class="app-card-desc">Real-time document editing, integrated directly into Nextcloud.</div>
+        </div>
+        <div class="app-card">
+          <div class="app-card-name">Forgejo</div>
+          <div class="app-card-desc">Self-hosted Git repositories, issues, and CI for your own projects.</div>
+        </div>
+        <div class="app-card app-card-more">
+          <div class="app-card-name">+ your next app</div>
+          <div class="app-card-desc">New services plug into the same contract &mdash; add one from the Apps tab.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- START WITH ONE SERVICE -->
+  <div class="steps-section">
+    <div class="steps-inner">
+      <div class="section-label">// getting started</div>
+      <h2>Start with one service.</h2>
+      <p class="section-sub">
+        You don&rsquo;t need to migrate your entire digital life at once. Start with the service
+        that matters most, prove that deployment, backup and recovery work for you, then expand
+        at your own pace.
+      </p>
+      <div class="steps-list">
+        <div class="steps-item">
+          <div class="steps-badge">01</div>
+          <div>
+            <div class="steps-title">Pick one service</div>
+            <div class="steps-desc">Chat, files, photos or your password vault &mdash; whichever you rely on most.</div>
+          </div>
+        </div>
+        <div class="steps-item">
+          <div class="steps-badge">02</div>
+          <div>
+            <div class="steps-title">Deploy it and prove recovery</div>
+            <div class="steps-desc">Run it for real, confirm backups and restore actually work, not just that it started.</div>
+          </div>
+        </div>
+        <div class="steps-item">
+          <div class="steps-badge">03</div>
+          <div>
+            <div class="steps-title">Add more at your own pace</div>
+            <div class="steps-desc">Every new service inherits the same private network, backup, and monitoring model.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY NOT JUST SELF-HOST -->
+  <div class="why-section">
+    <div class="why-inner">
+      <div class="section-label">// why not just install it yourself?</div>
+      <h2>Self-hosting is easy on day one.<br /><em>Day 500 is the hard part.</em></h2>
+      <p class="section-sub why-sub">
+        Installing an application takes minutes. Keeping it private, monitored, backed up,
+        recoverable, and understandable months later is the real work. Privalon treats
+        networking, backups, health, and recovery as part of the platform &mdash; not a pile of
+        unrelated admin tasks you rebuild for every new service.
+      </p>
+    </div>
+  </div>
+
+  <!-- FEATURES / SAFETY -->
+  <div class="section" id="safety">
+    <div class="section-label">// what privalon handles for you</div>
+    <h2>Self-hosting, without giving up operational safety.</h2>
+    <p class="section-sub">
+      Every capability below exists to reduce the gap between &ldquo;it started once&rdquo; and
+      &ldquo;it runs reliably over time.&rdquo;
     </p>
 
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">[01] PRIVATE</div>
-        <div class="feature-title">Private by Default</div>
+        <div class="feature-icon">[01] OWN</div>
+        <div class="feature-title">Your Data, Your Infrastructure</div>
         <div class="feature-desc">
-          Only what must be public is exposed. Every application lives on a private tailnet &mdash;
-          no public IPs, no public SSH, no exposed management surfaces.
+          Your files, conversations, photos, and application data live on infrastructure you
+          choose and control.
         </div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">[02] OBSERVE</div>
-        <div class="feature-title">Built-in Observability</div>
+        <div class="feature-icon">[02] PRIVATE</div>
+        <div class="feature-title">Private by Default</div>
         <div class="feature-desc">
-          Prometheus, Grafana, Loki, and Alloy are part of the baseline &mdash; not optional extras.
-          Metrics, logs, dashboards, and health signals from day one.
+          Applications and management interfaces stay on the private network unless they
+          genuinely need public exposure &mdash; and that exposure is always explicit, not
+          incidental.
         </div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">[03] RECOVER</div>
-        <div class="feature-title">Predictable Recovery</div>
+        <div class="feature-title">Backups You Can Recover From</div>
         <div class="feature-desc">
-          Encrypted dual-backend S3 backups, checked by Backrest, run on a schedule per service.
-          Restore paths are documented and designed to work under stress, not just on a good day.
+          Encrypted backups are part of the operating model, with recovery designed in from the
+          start rather than added after something breaks.
         </div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">[04] PERIMETER</div>
-        <div class="feature-title">Minimal Attack Surface</div>
+        <div class="feature-icon">[04] AWARE</div>
+        <div class="feature-title">Know When Something Is Wrong</div>
         <div class="feature-desc">
-          A single gateway handles public ingress. Everything else is tailnet-only. Host
-          firewalls default to deny. No improvised hardening required.
+          Health checks, logs, and alerts help you notice problems before a family member has to
+          tell you something stopped working &mdash; Prometheus, Grafana, and Loki underneath.
         </div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">[05] EXTEND</div>
-        <div class="feature-title">Repeatable Service Model</div>
+        <div class="feature-icon">[05] GROW</div>
+        <div class="feature-title">Start Small. Add More Later.</div>
         <div class="feature-desc">
-          Every application declares its own contract &mdash; health checks, backup scope, log
-          sources &mdash; so DNS, TLS, backup, and observability are wired up automatically, the
-          same way, every time.
+          Begin with one important service and grow your private environment as your confidence
+          increases &mdash; each addition inherits the same operating model automatically.
         </div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">[06] DASHBOARD</div>
-        <div class="feature-title">Local Operations Dashboard</div>
+        <div class="feature-icon">[06] CONTROL</div>
+        <div class="feature-title">One Place to Operate It</div>
         <div class="feature-desc">
-          A locally-hosted browser dashboard for deploys, apps, devices, and activity &mdash;
-          running on your own workstation only, never exposed to the internet.
+          See applications, devices, health, backups, and important activity in one place, while
+          technical details remain available when you need them.
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- APPS -->
-  <div class="section" id="apps">
-    <div class="section-label">// application catalog</div>
-    <h2>Real apps, not just infrastructure</h2>
-    <p class="section-sub">
-      Every application in the catalog inherits the same operating model automatically &mdash;
-      private by default, backed up, monitored, and reachable through one gateway.
-    </p>
-
-    <div class="apps-grid">
-      <div class="app-card">
-        <div class="app-card-name">Forgejo</div>
-        <div class="app-card-desc">Self-hosted Git, issues, and CI &mdash; your own GitHub.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">Nextcloud</div>
-        <div class="app-card-desc">Files, calendar, and collaboration, with S3-backed storage.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">Vaultwarden</div>
-        <div class="app-card-desc">A private, Bitwarden-compatible password manager.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">Mail</div>
-        <div class="app-card-desc">Full email hosting on Stalwart &mdash; SMTP, IMAP, spam filtering.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">Matrix</div>
-        <div class="app-card-desc">Private chat, voice, and video &mdash; Element web client, Jitsi calls.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">Ente Photos</div>
-        <div class="app-card-desc">End-to-end encrypted photo and video backup.</div>
-      </div>
-      <div class="app-card">
-        <div class="app-card-name">OnlyOffice</div>
-        <div class="app-card-desc">Real-time document editing, integrated directly into Nextcloud.</div>
-      </div>
-      <div class="app-card app-card-more">
-        <div class="app-card-name">+ your next app</div>
-        <div class="app-card-desc">New services plug into the same contract &mdash; add one from the Apps tab.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ARCHITECTURE -->
-  <div class="arch-section" id="architecture">
-    <div class="arch-inner">
-      <div>
-        <div class="section-label">// architecture</div>
-        <h2>Minimal surface.<br />Maximum control.</h2>
-        <p class="section-sub">
-          Three VM roles, one public entry point, everything else strictly private. Runs on
-          ThreeFold Grid or Hetzner Cloud today &mdash; the same blueprint, either provider.
-        </p>
-        <div class="arch-nodes">
-          <div class="arch-node">
-            <div class="arch-node-badge">PUBLIC</div>
-            <div>
-              <div class="arch-node-title">Gateway VM</div>
-              <div class="arch-node-desc">
-                Reverse proxy (Caddy), TLS termination, public ingress on 80/443, full-tunnel
-                VPN exit node.
-              </div>
-            </div>
-          </div>
-          <div class="arch-node">
-            <div class="arch-node-badge">CTRL</div>
-            <div>
-              <div class="arch-node-title">Headscale Control VM</div>
-              <div class="arch-node-desc">
-                Private network control plane &mdash; device registration, ACL enforcement, DERP
-                relay, WireGuard key distribution. Headplane gives it an admin UI.
-              </div>
-            </div>
-          </div>
-          <div class="arch-node">
-            <div class="arch-node-badge">PRIVATE</div>
-            <div>
-              <div class="arch-node-title">Workload VMs</div>
-              <div class="arch-node-desc">
-                No public IPv4. Applications bind to tailnet IPs only. Monitoring stack is
-                Prometheus, Grafana, Loki, and Alloy.
-              </div>
-            </div>
-          </div>
-          <div class="arch-node">
-            <div class="arch-node-badge">BACKUP</div>
-            <div>
-              <div class="arch-node-title">Dual S3 Backends</div>
-              <div class="arch-node-desc">
-                Encrypted Restic backups to two independent S3-compatible stores, tracked by
-                Backrest. Scheduled, deduplicated, replicated.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="arch-diagram">
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&nbsp;&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
-        <div>&nbsp;&nbsp;&nbsp;&#x2502; <span class="highlight">Gateway VM</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&nbsp;&nbsp;&nbsp;&#x2502; Public 80/443&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&nbsp;&nbsp;&nbsp;&#x2502; Caddy + Exit Node&#x2502;</div>
-        <div>&nbsp;&nbsp;&nbsp;&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502; Tailscale</div>
-        <div>&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
-        <div>&nbsp;&nbsp;&#x2502;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&#x250C;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x250C;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
-        <div>&#x2502; <span class="blue">Headscale</span>&nbsp;&nbsp;&#x2502; &#x2502; <span class="blue">Workload</span>&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&#x2502; Control VM &#x2502; &#x2502; VMs (private)&#x2502;</div>
-        <div>&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518; &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
-        <div>&nbsp;&nbsp;&nbsp;Your Devices</div>
-        <br />
-        <div class="dim">// providers: ThreeFold Grid &middot; Hetzner Cloud</div>
       </div>
     </div>
   </div>
@@ -246,11 +237,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="ui-inner">
       <div class="ui-header">
         <div class="section-label">// dashboard</div>
-        <h2>One dashboard for your whole private cloud.</h2>
+        <h2>Know how your digital home is doing.</h2>
         <p class="section-sub">
-          The local Web UI isn&rsquo;t just a deploy wrapper anymore &mdash; it&rsquo;s where you check
-          health, manage apps, add devices, and review activity. Runs on your workstation only,
-          never exposed to the internet.
+          See service health, backups, devices, and anything that needs attention in one place.
+          Technical details remain available when you want them. Runs on your own workstation
+          only, never exposed to the internet.
         </p>
       </div>
 
@@ -269,7 +260,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="dash-mock-tab">Devices</span>
             <span class="dash-mock-tab">Activity</span>
             <span class="dash-mock-tab">System</span>
-            <span class="dash-mock-env">test &#x25be;</span>
+            <span class="dash-mock-env">home &#x25be;</span>
           </div>
 
           <div class="dash-mock-status">
@@ -317,15 +308,94 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- RECOVERY -->
   <div class="recovery-section">
     <div class="section-label">// recovery</div>
-    <h2>One line to restore everything</h2>
-    <p class="section-sub" style="margin: 0 auto 0; text-align:center; max-width:600px;">
-      Like a crypto wallet seed phrase, your portable recovery line is all you need. If every
-      machine dies and your laptop is lost &mdash; as long as one S3 backup is alive, you&rsquo;re back.
+    <h2>Infrastructure can be replaced.<br />Your data can&rsquo;t.</h2>
+    <p class="section-sub" style="margin: 0 auto 0; text-align:center; max-width:620px;">
+      Privalon separates reproducible infrastructure from the state you actually care about.
+      A recovery line rebuilds your environment&rsquo;s configuration on a fresh machine; each
+      service&rsquo;s own encrypted backup restores automatically as it redeploys.
     </p>
     <div class="recovery-card">
-      <p class="recovery-quote">&ldquo;Save one line. Recover everything.&rdquo;</p>
+      <p class="recovery-quote">&ldquo;Save one line. Rebuild your environment anywhere.&rdquo;</p>
       <div class="recovery-code">
         ./scripts/restore.sh --recovery-line 'bp1-a7f9c2e4b6d81053-9f8e7d6c5b4a3021'
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="arch-section" id="architecture">
+    <div class="arch-inner">
+      <div>
+        <div class="section-label">// architecture</div>
+        <h2>Minimal surface.<br />Maximum control.</h2>
+        <p class="section-sub">
+          Your applications may run on different machines, but they behave like one private
+          environment. Services stay private by default; public exposure is always explicit, not
+          accidental. Runs on ThreeFold Grid or Hetzner Cloud today, without your digital life
+          depending on a single provider.
+        </p>
+        <div class="arch-nodes">
+          <div class="arch-node">
+            <div class="arch-node-badge">PUBLIC</div>
+            <div>
+              <div class="arch-node-title">Gateway VM</div>
+              <div class="arch-node-desc">
+                Reverse proxy (Caddy), TLS termination, public ingress on 80/443, full-tunnel
+                VPN exit node.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">CTRL</div>
+            <div>
+              <div class="arch-node-title">Headscale Control VM</div>
+              <div class="arch-node-desc">
+                Private network control plane &mdash; device registration, ACL enforcement, DERP
+                relay, WireGuard key distribution. Headplane gives it an admin UI.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">PRIVATE</div>
+            <div>
+              <div class="arch-node-title">Workload VMs</div>
+              <div class="arch-node-desc">
+                Applications bind to the private tailnet by default. Monitoring stack is
+                Prometheus, Grafana, Loki, and Alloy.
+              </div>
+            </div>
+          </div>
+          <div class="arch-node">
+            <div class="arch-node-badge">BACKUP</div>
+            <div>
+              <div class="arch-node-title">Dual S3 Backends</div>
+              <div class="arch-node-desc">
+                Encrypted Restic backups to two independent S3-compatible stores, tracked by
+                Backrest. Scheduled, deduplicated, replicated.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-diagram">
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; <span class="highlight">Gateway VM</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; Public 80/443&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2502; Caddy + Exit Node&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502; Tailscale</div>
+        <div>&nbsp;&nbsp;&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&nbsp;&nbsp;&#x2502;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&#x250C;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510; &#x250C;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;</div>
+        <div>&#x2502; <span class="blue">Headscale</span>&nbsp;&nbsp;&#x2502; &#x2502; <span class="blue">Workload</span>&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&#x2502; Control VM &#x2502; &#x2502; VMs (private)&#x2502;</div>
+        <div>&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518; &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x2502;</div>
+        <div>&nbsp;&nbsp;&nbsp;Your Devices</div>
+        <br />
+        <div class="dim">// providers: ThreeFold Grid &middot; Hetzner Cloud</div>
       </div>
     </div>
   </div>
@@ -334,58 +404,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="roadmap-section" id="roadmap">
     <div class="roadmap-inner">
       <div class="section-label">// roadmap</div>
-      <h2>Where we&rsquo;re going</h2>
+      <h2>Family Ready, and where we&rsquo;re going</h2>
       <p class="section-sub">
-        The long-term goal is to make running your own private infrastructure feel normal &mdash;
-        not exceptional.
+        The current milestone is Family Ready &mdash; moving real personal workloads onto
+        Privalon, starting with Matrix, before expanding further. This is an early technical
+        product, presented honestly at the stage it&rsquo;s actually at.
       </p>
       <div class="roadmap-grid">
         <div class="roadmap-item">
           <div class="roadmap-status done">SHIPPED</div>
-          <div class="roadmap-title">Core Infrastructure Blueprint</div>
+          <div class="roadmap-title">Private Infrastructure Foundation</div>
           <div class="roadmap-desc">
-            Gateway VM, Headscale control plane, monitoring stack, dual S3 backups, and
-            portable recovery line.
+            Private network, gateway, infrastructure provisioning, monitoring, and backup
+            foundations.
           </div>
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status done">SHIPPED</div>
-          <div class="roadmap-title">Full Operations Dashboard</div>
+          <div class="roadmap-title">Personal Application Catalog</div>
           <div class="roadmap-desc">
-            Home, Apps, Devices, Activity, and System tabs &mdash; not just a deploy wrapper, an
-            ongoing operations console for your own workstation.
-          </div>
-        </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status done">SHIPPED</div>
-          <div class="roadmap-title">Application Catalog</div>
-          <div class="roadmap-desc">
-            Forgejo, Nextcloud, Vaultwarden, Mail, Matrix, Ente Photos, and OnlyOffice, each
+            Matrix, Nextcloud, Vaultwarden, Mail, Ente Photos, OnlyOffice, and Forgejo, each
             inheriting backup, DNS, TLS, and observability automatically.
           </div>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status done">SHIPPED</div>
-          <div class="roadmap-title">Multi-Provider Support</div>
+        <div class="roadmap-item roadmap-item-featured">
+          <div class="roadmap-status wip">IN PROGRESS</div>
+          <div class="roadmap-title">Family-Ready Dogfooding</div>
           <div class="roadmap-desc">
-            The same blueprint deploys to ThreeFold Grid or Hetzner Cloud &mdash; provider choice
-            without an operating-model rewrite.
+            Moving real personal services onto Privalon, starting with Matrix, and validating
+            backup, restore, monitoring, and day-to-day reliability through continuous real use.
           </div>
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status wip">IN PROGRESS</div>
-          <div class="roadmap-title">Unified Identity &amp; Device Provisioning</div>
+          <div class="roadmap-title">Unified People &amp; Devices</div>
           <div class="roadmap-desc">
-            One person, one identity, across every application &mdash; add, block, or offboard
-            someone from the whole environment in a single action.
+            Manage family members, access, and devices centrally instead of creating identities
+            independently inside every application.
           </div>
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status planned">PLANNED</div>
-          <div class="roadmap-title">Private AI Operations Layer</div>
+          <div class="roadmap-title">Safe Updates &amp; Lifecycle</div>
           <div class="roadmap-desc">
-            An AI assistant that helps operate the environment &mdash; answering questions,
-            diagnosing issues, suggesting actions &mdash; without sending data to external platforms.
+            Know what versions are running, review updates, protect state before risky changes,
+            and recover when an update fails.
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-status planned">PLANNED</div>
+          <div class="roadmap-title">Personal AI Access</div>
+          <div class="roadmap-desc">
+            Let your AI assistant access selected personal Privalon data under your own identity
+            and existing application permissions.
           </div>
         </div>
       </div>
