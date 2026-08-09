@@ -848,6 +848,13 @@ const {
   .footer-links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--green); }
 
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: right;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -884,6 +891,7 @@ const {
 
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; text-align: center; }
     .footer-links { gap: 1.5rem; }
+    .footer-meta { text-align: center; }
   }
 
   @media (max-width: 480px) {
